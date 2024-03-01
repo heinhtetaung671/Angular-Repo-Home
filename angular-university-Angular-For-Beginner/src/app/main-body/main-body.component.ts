@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { UserDataComponent } from '../user-data/user-data.component';
 import { CourceInfoComponent } from '../cource-info/cource-info.component';
 import { Course } from '../../model/Course';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-body',
   standalone: true,
-  imports: [UserDataComponent, CourceInfoComponent],
+  imports: [UserDataComponent, CourceInfoComponent, CommonModule],
   templateUrl: './main-body.component.html',
   styles: ``,
 })
