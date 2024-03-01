@@ -2,11 +2,12 @@
    <div class="card-body">
       <div class="card-title">{{ course.id }}</div>
 
-      @if (course.name) {
-         <h6>Course Name : {{ course.name }}</h6>
-      } @else {
-         <h6>This Course has no label!</h6>
-      }
+
+         <h6 *ngIf="checkNameIsAvailableOrNot(); else noName">Course Name : {{ course.name }}</h6>
+        
+         <ng-template #noName>
+            <h6 >This Course has no label!</h6>
+         </ng-template>
 
       <h6>Course Fees : {{ course.fees }}</h6>
       <h6>Course Discription : {{ course.discription }} index: {{ index }}</h6>

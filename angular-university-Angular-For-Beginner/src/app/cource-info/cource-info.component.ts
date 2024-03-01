@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { Course } from '../../model/Course';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cource-info',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './cource-info.component.html',
   styles: ``,
 })
@@ -30,6 +31,10 @@ export class CourceInfoComponent {
 
   checkCourse(): void {
     console.log(`checked ${this.course.name}`);
+  }
+
+  checkNameIsAvailableOrNot(): boolean{
+    return this.course.name != undefined && this.course.name != null && this.course.name != '';
   }
 
   courseInfo(): void {
