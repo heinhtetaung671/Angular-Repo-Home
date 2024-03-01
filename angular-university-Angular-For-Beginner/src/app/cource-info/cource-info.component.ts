@@ -23,6 +23,11 @@ export class CourceInfoComponent {
     discription: 'default discription',
   };
   
+  @Input({
+    required: true
+  })
+  index: number = 0;
+
   checkCourse(): void {
     console.log(`checked ${this.course.name}`);
   }

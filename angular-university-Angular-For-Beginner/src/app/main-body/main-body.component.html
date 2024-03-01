@@ -1,8 +1,11 @@
 
-@for (course of courses; track $index) {
-   <app-cource-info (click)="courseTemplateClick()" (courseInfoEvent)="courseInfoCustomEvent($event)" [course]="course"></app-cource-info>
+
+@for (course of courses; track $index; let count = $count; let even = $even; let first = $first) {
+   <app-cource-info [index]="$index" [class.is-first]="first" (click)="courseTemplateClick()" (courseInfoEvent)="courseInfoCustomEvent($event)" [course]="course"></app-cource-info>
+} @empty {
+   <div class="alert alert-danger w-50 text-center">
+      There is no Course!
+   </div>
 }
-
-
 
 <app-user-data></app-user-data>
