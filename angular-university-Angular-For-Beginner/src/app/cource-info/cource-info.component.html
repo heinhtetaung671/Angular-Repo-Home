@@ -4,7 +4,6 @@
 
 
          <h6 *ngIf="checkNameIsAvailableOrNot(); else noName">Course Name : {{ course.name }}</h6>
-        
          <ng-template #noName>
             <h6 >This Course has no label!</h6>
          </ng-template>
