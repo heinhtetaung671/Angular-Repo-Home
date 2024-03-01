@@ -1,0 +1,11 @@
+.card.BASIC {
+   background-color: rgb(196, 248, 248);
+}
+
+.card.INTERMEDIATE {
+   background-color: rgb(210, 238, 183);
+}
+
+.card.ADVANCE {
+   background-color: rgb(252, 183, 156);
+}

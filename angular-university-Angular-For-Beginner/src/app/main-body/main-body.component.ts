@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [UserDataComponent, CourceInfoComponent, CommonModule],
   templateUrl: './main-body.component.html',
-  styles: ``,
+  styleUrl: `./main-body.component.css`,
 })
 export class MainBodyComponent {
   courses: Course[] = [
@@ -17,6 +17,7 @@ export class MainBodyComponent {
       id: 1,
       name: 'Java Basic',
       fees: 300000,
+      category: 'BASIC',
       discription:
         'This course is for the people who are new to the Java Language.',
     },
@@ -25,6 +26,7 @@ export class MainBodyComponent {
       id: 2,
       name: '',
       fees: 600000,
+      category: 'INTERMEDIATE',
       discription:
         'This course is for the people who are learning to create a web page with Java Language (Spring Framework)',
     },
@@ -33,9 +35,16 @@ export class MainBodyComponent {
       id: 3,
       name: 'Angular Framework',
       fees: 400000,
+      category: 'INTERMEDIATE',
       discription:
         'This course is for the people who are learning front end development',
-    },
+    }, {
+      id: 4,
+      name: 'Cloud Service',
+      fees: 700000,
+      category: 'ADVANCE',
+      discription: 'This course is for advance programmer.'
+    }
   ];
 
   courseTemplateClick(): void {

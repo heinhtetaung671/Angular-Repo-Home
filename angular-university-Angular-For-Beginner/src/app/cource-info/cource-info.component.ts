@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cource-info.component.html',
-  styles: ``,
+  styleUrl: './cource-info.component.css'
 })
 export class CourceInfoComponent {
  
@@ -21,6 +21,7 @@ export class CourceInfoComponent {
     id: 1,
     name: 'default',
     fees: 300000,
+    category: 'BASIC',
     discription: 'default discription',
   };
   
@@ -39,6 +40,10 @@ export class CourceInfoComponent {
 
   courseInfo(): void {
     this.courseInfoEvent.emit(this.course);
+  }
+
+  inputClass(): string{
+     return this.course.category ;
   }
 
 }
