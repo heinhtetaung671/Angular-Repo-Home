@@ -26,4 +26,8 @@ export class MainBodyComponent {
     discription: 'This course is for the people who are learning to create a web page with Java Language (Spring Framework)'
   }
   
+  courseTemplateClick(): void{
+    console.log('Course Template Btn Click')
+  }
+
 }

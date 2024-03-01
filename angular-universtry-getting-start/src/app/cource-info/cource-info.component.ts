@@ -20,4 +20,8 @@ export class CourceInfoComponent {
     discription: 'default discription',
   };
   
+  checkCourse(): void{
+    console.log('Course Check Button Clicked.')
+  }
+
 }
