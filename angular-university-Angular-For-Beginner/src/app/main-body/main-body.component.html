@@ -1,0 +1,8 @@
+
+@for (course of courses; track $index) {
+   <app-cource-info (click)="courseTemplateClick()" (courseInfoEvent)="courseInfoCustomEvent($event)" [course]="course"></app-cource-info>
+}
+
+
+
+<app-user-data></app-user-data>

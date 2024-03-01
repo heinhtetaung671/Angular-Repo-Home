@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { Course } from '../../model/Course';
 
 @Component({
@@ -10,6 +10,9 @@ import { Course } from '../../model/Course';
 })
 export class CourceInfoComponent {
  
+  @Output()
+  courseInfoEvent: EventEmitter<Course> = new EventEmitter<Course>();
+
   @Input({
     required: true,
   })
@@ -20,8 +23,12 @@ export class CourceInfoComponent {
     discription: 'default discription',
   };
   
-  checkCourse(): void{
-    console.log('Course Check Button Clicked.')
+  checkCourse(): void {
+    console.log(`checked ${this.course.name}`);
+  }
+
+  courseInfo(): void {
+    this.courseInfoEvent.emit(this.course);
   }
 
 }
