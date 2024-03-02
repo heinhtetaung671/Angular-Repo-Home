@@ -15,7 +15,6 @@
             <h6 class="text-success text-center" *ngSwitchCase="'INTERMEDIATE'">{{ course.category }} </h6>
             <h6 class="text-danger text-center" *ngSwitchCase="'ADVANCE'">{{ course.category }} </h6>
             <h6 class="text-center" *ngSwitchDefault="">Unknown Course</h6>
-
          </div>
 
       <button (click)="checkCourse(); courseInfo()" class="btn btn-success">Check Course</button>

@@ -1,0 +1,13 @@
+<div>Text Pipe : {{ text | titlecase }}</div>
+
+<div>Number Pipe : {{ num | number: '7.2-2' }}</div>
+
+<div>Currency Pipe : {{ num | currency: 'EUR' }}</div>
+
+<div>{{ obj | keyvalue }}</div>
+
+@for (pair of obj | keyvalue; track $index) {
+
+   <div>{{ pair.key }}  :  {{ pair.value }}</div>
+
+}
