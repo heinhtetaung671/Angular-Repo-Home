@@ -9,6 +9,22 @@
 
       <h6>Course Fees : {{ course.fees }}</h6>
       <h6>Course Discription : {{ course.discription }} index: {{ index + 1}}</h6>
+
+      @switch (course.category) {
+         @case ('BASIC') {
+            <h6 class="text-primary text-center">{{ course.category }} </h6>
+         }
+         @case ('INTERMEDIATE') {
+            <h6 class="text-success text-center">{{ course.category }} </h6>
+         }
+         @case ('ADVANCE') {
+            <h6 class="text-danger text-center">{{ course.category }} </h6>
+         }
+         @default {
+            <h6>Unknown Course</h6>
+         }
+      }
+
       <button (click)="checkCourse(); courseInfo()" class="btn btn-success">Check Course</button>
    </div>
 </div>
