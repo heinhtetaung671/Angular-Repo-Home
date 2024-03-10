@@ -1,0 +1,6 @@
+<div class="input-group">
+   <ng-content></ng-content>
+   <span class="input-group-text">
+      <i [ngClass]="{'bi-x text-danger': !valid(), 'bi-check text-success': valid()}"></i>
+   </span>
+</div>

@@ -51,7 +51,7 @@ export class MainBodyComponent {
     console.log('Course Template Btn Click');
   }
 
-  courseInfoCustomEvent(course: Course): void {
+  courseInfoCustomEventHandler(course: Course): void {
     console.log(`click custom event in ${course.name} template.`);
   }
 }

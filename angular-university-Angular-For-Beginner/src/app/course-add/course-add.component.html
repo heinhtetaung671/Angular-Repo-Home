@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+   <div class="col-6">
+      <h4 class="text-warning">Course Add</h4>
+      <form [formGroup]="myForm">
+         <div class="row">
+            <div class="col">
+                  <app-form-group label="Course Name">
+                     <app-input-group [valid]="checkValidOrNot('name')">
+                        <input class="form-control" formControlName="name" type="text" placeholder="Enter Course Name.">
+                     </app-input-group>
+                  </app-form-group>
+            </div>
+            <div class="col">
+               <app-form-group label="Category">
+                  <app-input-group [valid]="checkValidOrNot('category')">
+                     <select formControlName="category" class="form-select">
+                        <option value="0">Select One Category</option>
+                        @for (c of categories; track $index) {
+                           <option [value]="c.id">{{ c.name }}</option>
+                        }
+                     </select>
+                  </app-input-group>
+               </app-form-group>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <app-form-group label="Fees">
+                  <app-input-group [valid]="checkValidOrNot('fees')">
+                        <input formControlName="fees" type="number" placeholder="Enter Course Fees." class="form-control">
+                  </app-input-group>
+               </app-form-group>
+         </div>
+            <div class="col">
+               <app-form-group label="Duration">
+                  <app-input-group [valid]="checkValidOrNot('duration')">
+                     <input formControlName="duration" type="number" placeholder="Enter Course Duration." class="form-control">
+               </app-input-group>
+            </app-form-group>
+         </div>
+         </div>
+         <div class="row">
+            <app-form-group label="Description">
+               <textarea formControlName="description" id="" cols="30" rows="5" class="form-control" placeholder="Enter Course Description."></textarea>
+            </app-form-group>
+         </div>
+         <div class="row justify-content-center">
+            <div class="col-auto">
+               <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
