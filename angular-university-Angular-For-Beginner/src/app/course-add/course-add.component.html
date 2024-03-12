@@ -1,5 +1,6 @@
 <div class="row justify-content-center">
    <div class="col-6">
+      <div class="alert" [ngClass]="{'d-none': !showMessageData.show}" [class]="showMessageData.success ? 'alert-success' : 'alert-danger'">{{ showMessageData.message }}</div>
       <h4 class="text-warning">Course Add</h4>
       <form [formGroup]="myForm">
          <div class="row">
@@ -12,8 +13,8 @@
             </div>
             <div class="col">
                <app-form-group label="Category">
-                  <app-input-group [valid]="checkValidOrNot('category')">
-                     <select formControlName="category" class="form-select">
+                  <app-input-group [valid]="checkValidOrNot('categoryId')">
+                     <select formControlName="categoryId" class="form-select">
                         <option value="0">Select One Category</option>
                         @for (c of categories; track $index) {
                            <option [value]="c.id">{{ c.name }}</option>
@@ -46,9 +47,10 @@
          </div>
          <div class="row justify-content-center">
             <div class="col-auto">
-               <button type="submit" class="btn btn-success btn-lg">Submit</button>
+               <button (click)="saveCourse()" [ngClass]="{'disabled': myForm.invalid}" type="submit" class="btn btn-success btn-lg">Submit</button>
             </div>
          </div>
       </form>
    </div>
 </div>
+
