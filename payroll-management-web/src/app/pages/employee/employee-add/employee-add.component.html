@@ -1,1 +1,19 @@
-<p>employee-add works!</p>
+<div class="mt-3 w-75 m-auto">
+   <h3 class="mb-4 fw-bold">Employee Add Form</h3>
+
+   <form [formGroup]="employeeForm">
+      <div class="row">
+         <div class="col">
+            <app-form-control-group label="Name">
+               <input formControlName="name" type="text" class="form-control" placeholder="Enter Employee Name.">
+            </app-form-control-group>
+         </div>
+         <div class="col">
+            <app-form-control-group label="Phone">
+               <input formControlName="phone" type="tel" class="form-control" placeholder="Enter Employee Phone Number.">
+            </app-form-control-group>
+         </div>
+      </div>
+   </form>
+   
+</div>
