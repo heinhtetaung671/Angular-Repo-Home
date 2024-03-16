@@ -1,23 +1,9 @@
-<div class="container-fluid">
-  <div class="row mb-4">
-    <div class="col-1 text-center">
-      <a href="#" class="navbar-brand text-success fw-bold">PMS System</a>
-    </div>
-  </div>
-<div class="row ">
-    <div class="col-1 ">
-      <ul class="nav  flex-column align-items-center  nav-underline ">
-        <li class="nav-item ">
-          <a href="#" class="nav-link text-success fw-bold">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link text-success fw-bold">Dashboard</a>
-        </li>
-      </ul>
-    </div>
+<app-navbar></app-navbar>
+<div class="d-flex mt-4">
 
-    <div class="col border-success border border-top-0 border-end-0 border-bottom-0">
-  
-    </div>
-</div>
+  <app-side-bar></app-side-bar>
+
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
 </div>
