@@ -5,12 +5,23 @@
       <div class="row">
          <div class="col">
             <app-form-control-group label="Name">
-               <input formControlName="name" type="text" class="form-control" placeholder="Enter Employee Name.">
+               <app-input-group [valid]="employeeForm.get('name')!.valid">
+                  <input formControlName="name" type="text" class="form-control" placeholder="Enter Employee Name.">
+               </app-input-group>
             </app-form-control-group>
          </div>
          <div class="col">
             <app-form-control-group label="Phone">
-               <input formControlName="phone" type="tel" class="form-control" placeholder="Enter Employee Phone Number.">
+              <app-input-group [valid]="employeeForm.get('phone')!.valid">
+                <input formControlName="phone" type="tel" class="form-control" placeholder="Enter Employee Phone Number.">
+              </app-input-group>
+            </app-form-control-group>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <app-form-control-group label="Email">
+            
             </app-form-control-group>
          </div>
       </div>
