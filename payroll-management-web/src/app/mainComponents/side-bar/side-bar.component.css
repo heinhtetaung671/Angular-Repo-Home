@@ -14,12 +14,12 @@
 }
 
 .side-bar-div {
-   line-height: 3rem;
    height: 3rem;
    width: 100%;
 }
 
 .side-bar-div:hover, .side-bar-div-active {
+   line-height: 3rem;
    height: 5rem;
    background-color: rgb(211, 214, 214);
    padding: 1rem;

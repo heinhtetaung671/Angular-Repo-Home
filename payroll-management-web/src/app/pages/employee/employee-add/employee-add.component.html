@@ -1,30 +1,96 @@
-<div class="mt-3 w-75 m-auto">
+<div class="w-75 m-auto">
    <h3 class="mb-4 fw-bold">Employee Add Form</h3>
 
    <form [formGroup]="employeeForm">
+
       <div class="row">
          <div class="col">
             <app-form-control-group label="Name">
-               <app-input-group [valid]="employeeForm.get('name')!.valid">
+               <app-input-group [valid]="isControlValid('name')">
                   <input formControlName="name" type="text" class="form-control" placeholder="Enter Employee Name.">
                </app-input-group>
             </app-form-control-group>
          </div>
          <div class="col">
-            <app-form-control-group label="Phone">
-              <app-input-group [valid]="employeeForm.get('phone')!.valid">
-                <input formControlName="phone" type="tel" class="form-control" placeholder="Enter Employee Phone Number.">
+            <app-form-control-group label="Password">
+              <app-input-group [valid]="isControlValid('password')">
+                <input formControlName="password" type="tel" class="form-control" placeholder="Enter Employee Password Number.">
               </app-input-group>
             </app-form-control-group>
          </div>
       </div>
+
       <div class="row">
          <div class="col">
-            <app-form-control-group label="Email">
-            
+            <app-form-control-group label="Department">
+               <app-input-group [valid]="isControlValid('departmentId')">
+                  <select formControlName="departmentId" id="" class="form-select">
+                     <option value="0">Select One Department</option>
+                  </select>
+               </app-input-group>
             </app-form-control-group>
+         </div>
+         <div class="col">
+            <app-form-control-group label="Position">
+               <app-input-group [valid]="isControlValid('positionId')">
+                  <select [disabled]="true" class="form-control" id="" class="form-select">
+                     <option value="0">Select One Employee</option>
+                  </select>
+               </app-input-group>
+            </app-form-control-group>
+         </div>
+      </div>
+
+      <div class="row gap-4">
+         <div class="col" formArrayName="phones">
+            <div class="row mb-2">
+               <label class="form-label col">Phones</label>
+
+               <button [ngClass]="{'disabled': !canAdd('phones')}" (click)="addControlToFormArray('phones')" class="btn btn-sm btn-outline-success col-auto">
+                  <i class="bi-plus"></i>
+               </button>
+            </div>
+               @for (item of phones.controls; let idx = $index; let last = $last; track idx) {
+               <div [ngClass]="{'mb-2': !last}" class="row ">
+                  <div class="col">
+                     <app-input-group [valid]="isControlFromArrayValid('phones')(idx)">
+                        <input [value]="item.value" [formControlName]="idx" type="number" class="form-control">
+                     </app-input-group> 
+                  </div>
+
+                  <button [ngClass]="{'disabled': !canRemovePhone()}" (click)="removeControlFromPhoneFormArray(idx)" class="btn btn-sm btn-outline-danger col-auto">
+                     <i class="bi-x"></i>
+                  </button>
+               </div>
+            }
+         </div>
+         <div class="col" formArrayName="emails">
+            <div class="d-flex justify-content-between mb-2">
+               <label class="form-label">Email</label>
+
+               <button [ngClass]="{'disabled': !canAdd('emails')}" (click)="addControlToFormArray('emails')" class="btn btn-sm btn-outline-success">
+                  <i class="bi-plus"></i>
+               </button>
+            </div>             
+              @for (item of emails.controls; let idx = $index; let last = $last; track idx) {
+                  <div [ngClass]="{'mb-2': !last}" class="row">
+                     <div class="col">
+                        <app-input-group [valid]="isControlFromArrayValid('emails')(idx)">
+                           <input [formControlName]="idx" [value]="item.value" type="email" class="form-control">
+                        </app-input-group>
+                     </div>
+                     <div class="col-auto">
+                        <button [ngClass]="{'disabled': !canRemoveEmail()}" (click)="removeControlFromEmailFormArray(idx)" class="btn btn-sm btn-outline-danger">
+                           <i class="bi-x"></i>
+                        </button>
+                     </div>
+                  </div>
+               }
          </div>
       </div>
    </form>
    
+   <pre>
+      {{ employeeForm.value | json}}
+   </pre>
 </div>
