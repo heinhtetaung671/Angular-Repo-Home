@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { DepartmentSideBarComponent } from './department-side-bar/department-side-bar.component';
+import { RouterOutlet } from '@angular/router';
+import { DepartmentNavComponent } from './department-nav/department-nav.component';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [DepartmentSideBarComponent],
+  imports: [RouterOutlet, DepartmentNavComponent],
   templateUrl: './department.component.html',
-  styleUrl: `./department.component.css`
 })
 export class DepartmentComponent {
 
