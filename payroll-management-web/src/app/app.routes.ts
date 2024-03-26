@@ -4,6 +4,7 @@ import { DepartmentComponent } from './pages/department/department.component';
 import { DepartmentDetailsComponent } from './pages/department/department-details/department-details.component';
 import { DepartmentAddComponent } from './pages/department/department-add/department-add.component';
 import { DepartmentDashboardComponent } from './pages/department/department-dashboard/department-dashboard.component';
+import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
 
 export const routes: Routes = [
   {
@@ -16,10 +17,11 @@ export const routes: Routes = [
    component: DepartmentComponent,
    title: 'PMS | Department',
    children: [
+    { path: 'list', component: DepartmentListComponent, title: 'Department | List'},
     { path: 'details', component: DepartmentDetailsComponent, title: 'Department | Details' },
     { path: 'add', component: DepartmentAddComponent, title: 'Department | Add' },
     { path: 'dashboard', component: DepartmentDashboardComponent, title: 'Department | Dashboard' },
-    { path: '', redirectTo: '/department/details', pathMatch: 'full'}
+    { path: '', redirectTo: '/department/list', pathMatch: 'full'}
    ]
   }
 ];
