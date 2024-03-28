@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { max } from 'rxjs';
 import { WidgetsModule } from '../../../widgets/widgets-module/widgets-module.module';
 import { CommonModule } from '@angular/common';
+import { DepartmentService } from '../../../services/department.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-add',
@@ -15,7 +16,7 @@ export class DepartmentAddComponent {
 
   departmentForm: FormGroup;
 
-  constructor(fb: FormBuilder){
+  constructor(fb: FormBuilder, private service: DepartmentService, private router: Router){
     this.departmentForm = fb.group({
       code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
       name: ['', Validators.required],
@@ -27,6 +28,14 @@ export class DepartmentAddComponent {
 
   getControl(controlName: string){
     return this.departmentForm.controls[controlName] as FormControl
+  }
+
+  save(){
+    this.service.save(this.departmentForm.value).subscribe(result => {
+      if(result.status == 'SUCCESS'){
+        this.router.navigate(['/department', 'list'])
+      }
+    })
   }
 
 }
