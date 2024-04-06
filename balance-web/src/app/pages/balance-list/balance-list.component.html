@@ -1,0 +1,43 @@
+<app-page-title [title]="title()" [icon]="icon()"></app-page-title>
+
+<app-search-list-layout>
+  <!-- Search Form -->
+  <form search [formGroup]="form" class="d-flex gap-3 align-items-end">
+    <app-search-input-group label="From Date">
+      <input formControlName="from" type="date" class="form-control" />
+    </app-search-input-group>
+    <app-search-input-group label="To Date">
+      <input formControlName="to" type="date" class="form-control" />
+    </app-search-input-group>
+    <app-search-input-group label="Keyword">
+      <input formControlName="keyword" type="text" class="form-control" />
+    </app-search-input-group>
+
+    <span>
+      <button class="btn btn-outline-primary btn-lg">
+        <i class="bi-search"></i> Search
+      </button>
+    </span>
+
+    <span>
+      <button class="btn btn-outline-danger btn-lg">
+        <i class="bi-plus-lg"></i> Add New
+      </button>
+    </span>
+  </form>
+
+   <!-- Content List -->
+  <table list class="table table-bordered" >
+      <thead>
+         <tr>
+            <th>No</th>
+            <th>Category</th>
+            <th>IssueAt</th>
+            <th>Issuer</th>
+            <th>Items</th>
+            <th>Amount</th>
+            <th>Remark</th>
+         </tr>
+      </thead>
+  </table>
+</app-search-list-layout>

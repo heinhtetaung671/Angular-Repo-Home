@@ -1,0 +1,36 @@
+<app-page-title title="Category" icon="bi-tags"></app-page-title>
+
+<app-search-list-layout>
+   <form search [formGroup]="form" class="d-flex gap-3 align-items-end">
+      <app-search-input-group label="Type">
+         <select formArrayName="type" class="form-select">
+            <option value="">Select Type</option>
+            @for (item of types(); track $index) {
+               <option [value]="item.toLowerCase()">{{ item }}</option>
+            }
+         </select>
+      </app-search-input-group>
+      <app-search-input-group label="Name">
+         <input formControlName="name" type="text" class="form-control">
+      </app-search-input-group>
+
+      <span>
+         <button class="btn btn-outline-primary btn-lg"><i class="bi-search"></i> Search</button>
+      </span>
+
+      <span>
+         <button class="btn btn-outline-danger btn-lg"><i class="bi-plus-lg"></i> Add New</button>
+      </span>
+   </form>
+
+   <table list class="table table-bordered">
+      <thead>
+         <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Remark</th>
+         </tr>
+      </thead>
+   </table>
+</app-search-list-layout>

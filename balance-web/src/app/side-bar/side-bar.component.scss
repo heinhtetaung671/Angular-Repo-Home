@@ -1,0 +1,21 @@
+app-side-bar {
+   overflow: scroll;
+}
+
+#side-bar {
+   height: 100vh;
+}
+
+#side-bar.open {
+   width: 280px;
+}
+
+#side-bar.close {
+   width: 60px;
+}
+
+#side-bar > nav > ul {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}

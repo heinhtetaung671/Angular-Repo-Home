@@ -1,0 +1,29 @@
+<div id="side-bar" [ngClass]="{'open': open(), 'close text-center': !open()}" class="shadow">
+   <h5 (click)="updateStatus()" class="m-3"><i [ngClass]="{'bi-arrow-left': open(), 'bi-arrow-right': !open()}"></i></h5>
+
+   <nav>
+      <ul>
+         <li>
+            <app-nav-link title="Home" [path]="['/']" icon="bi-house" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Category" [path]="['/category']" icon="bi-tags" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Employees" [path]="['/employee']" icon="bi-people" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Income" [path]="['/income']" icon="bi-cash-stack" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Expense" [path]="['/expense']" icon="bi-cart-dash" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Balance Report" [path]="['/report']" icon="bi-bar-chart" [open]="open()"></app-nav-link>
+         </li>
+         <li>
+            <app-nav-link title="Sign Out" [path]="['/sign-out']" icon="bi-lock" [open]="open()"></app-nav-link>
+         </li>
+      </ul>
+   </nav>
+</div>
