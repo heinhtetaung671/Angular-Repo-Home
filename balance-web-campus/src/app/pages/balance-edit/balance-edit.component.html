@@ -1,0 +1,114 @@
+<app-page-title [icon]="icon()" [title]="title()"></app-page-title>
+
+<form [formGroup]="form">
+  <div class="row">
+    <!-- Issue At -->
+    <div class="col-3">
+      <app-validated-form-group [valid]="form.get('issueAt')?.valid" label="Issue Date">
+        <input formControlName="issueDate" type="date" class="form-control">
+      </app-validated-form-group>
+    </div>
+
+    <!-- Category -->
+    <div class="col-3">
+      <app-validated-form-group [valid]="form.get('category')?.valid" label="Category">
+        <select formControlName="categoryId" class="form-select">
+          <option value="">Select Category</option>
+          @for (item of categoryList(); track $index) {
+            <option [value]="item.id">{{ item.name }}</option>
+          }
+        </select>
+      </app-validated-form-group>
+    </div>
+
+    <div class="col">
+      <!-- Remark -->
+      <app-search-form-group label="Remark">
+        <input type="text" class="form-control" placeholder="Enter Remark">
+      </app-search-form-group>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-6">
+      <label class="form-label">Item Name</label>
+    </div>
+    <div class="col">
+      <label class="form-label">Unit Price</label>
+    </div>
+    <div class="col">
+      <label class="form-label">Quantity</label>
+    </div>
+    <div class="col">
+      <label class="form-label">Total</label>
+    </div>
+  </div>  <section formArrayName="items">
+    <h5><i class="bi-list"></i> Items</h5>
+
+    @for (item of items.controls; track $index) {
+      <div [formGroupName]="$index" class="row mb-2">
+        <div class="col-6">
+          <app-input-group [valid]="items.controls[$index].get('name')?.valid">
+            <input [value]="item.get('name')?.value" formControlName="name" type="text" class="form-control" placeholder="Item Name">
+          </app-input-group>
+        </div>
+
+        <div class="col">
+          <app-input-group [valid]="items.controls[$index].get('unitPrice')?.valid">
+            <input [value]="item.get('unitPrice')?.value" formControlName="unitPrice" type="number" class="form-control" >
+          </app-input-group>
+        </div>
+
+        <div class="col">
+          <app-input-group [valid]="items.controls[$index].get('quantity')?.valid">
+            <input [value]="item.get('quantity')?.value" formControlName="quantity" type="number" class="form-control" >
+          </app-input-group>
+        </div>
+
+        <div class="col">
+          <div class="input-group">
+            <span class="form-control">
+              {{getItemTotal($index)}}
+            </span>
+
+            <button (click)="removeItem($index)" type="button" class="input-group-text">
+              <i class="bi-trash"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    }
+  </section>
+
+  <div class="row">
+    <div class="col offset-6">
+      <span class="form-control bg-info text-white">Total</span>
+    </div>
+    <div class="col">
+      <span class="form-control bg-info text-white">
+        {{totalQuantity}}
+      </span>
+    </div>
+    <div class="col">
+      <span class="form-control bg-info text-white">
+        {{totalAmount}}
+      </span>
+    </div>
+
+  </div>
+
+  <div class="row mt-2">
+    <div class="col offset-8">
+      <button (click)="addItem()" type="button" class="btn btn-outline-primary d-block w-100">
+        <i class="bi-plus-lg"></i> Add Item
+      </button>
+    </div>
+    <div class="col">
+      <button (click)="save()" type="button" class="btn btn-outline-danger d-block w-100">
+        <i class="bi-save"></i> Save Entry
+      </button>
+    </div>
+  </div>
+</form>
