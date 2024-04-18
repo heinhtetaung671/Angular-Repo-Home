@@ -1,0 +1,45 @@
+<app-page-title icon="bi-info-circle" title="Employee Details"></app-page-title>
+
+<div class="row mt-4">
+   <div class="col-4">
+      <app-card>
+         <h4 class="card-title mb-3">Hein Htet Aung's Details</h4>
+            <app-card-info-row label="id" [data]="data().info.id"></app-card-info-row>
+            <app-card-info-row label="Name" [data]="data().info.name"></app-card-info-row>
+            <app-card-info-row label="Role" [data]="data().info.role"></app-card-info-row>
+            <app-card-info-row label="Status" [data]="data().info.status"></app-card-info-row>
+            <app-card-info-row label="Phone" [data]="data().info.phone"></app-card-info-row>
+            <app-card-info-row label="Email" [data]="data().info.email"></app-card-info-row>
+         </app-card>
+   </div>
+   <section class="col overflow-scroll" style="height: 90vh;">
+      <table class="table table-bordered">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Role</th>
+               <th>Status</th>
+               <th>Phone</th>
+               <th>Email</th>
+               <th>Changes</th>
+               <th>ChangeAt</th>
+               <th>ChangeBy</th>
+            </tr>
+         </thead>
+         <tbody>
+            @for (item of data().history; track $index) {
+               <tr>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.role }}</td>
+                  <td>{{ item.status}}</td>
+                  <td>{{ item.phone }}</td>
+                  <td>{{ item.email }}</td>
+                  <td>{{ item.changes }}</td>
+                  <td>{{ item.changeAt | date: 'yyyy/MM/dd' }}</td>
+                  <td>{{ item.changeBy }}</td>
+               </tr>
+            }
+         </tbody>
+      </table>
+   </section>
+</div>

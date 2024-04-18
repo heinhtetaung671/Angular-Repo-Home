@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { BalanceService } from '../../service/balance.service';
 import { CategoryService } from '../../service/category.service';
-import { CategorySelectBox } from '../../model/balance-app';
+import { BalanceType, CategorySelectBox } from '../../model/balance-app';
 import { ApiResponseUtils } from '../../model/api-response-utils';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
   styles: ``,
 })
 export class BalanceEditComponent {
-  type = input<string>();
+  type = input<BalanceType>();
   id = input<string>('');
 
   edit = computed<boolean>(() => this.id() != null);
@@ -39,8 +39,9 @@ export class BalanceEditComponent {
     private categoryService: CategoryService,
     private router: Router
   ) {
+
     this.form = builder.group({
-      issueDate: ['', Validators.required],
+      issueDate: ['', [Validators.required]],
       categoryId: ['', Validators.required],
       remark: '',
       items: builder.array([]),
@@ -52,15 +53,18 @@ export class BalanceEditComponent {
 
     effect(() => {
       if (this.edit()) {
-        service.findByIdForEdit(this.id()).subscribe((result) => {
+        service.findByIdForEdit(this.id()).subscribe(result => {
           if (result.status == 'SUCCESS') {
+            while(this.items.length < result.payload.items.length){
+              this.addItem();
+            }
             this.form.patchValue(result.payload);
           }
         });
       }
-    });
 
-    this.loadCategoryForSelectBox();
+      this.loadCategoryForSelectBox();
+    });
   }
 
   get items() {
@@ -122,7 +126,7 @@ export class BalanceEditComponent {
   }
 
   loadCategoryForSelectBox() {
-    this.categoryService.loadAllForSearchBox().subscribe((result) => {
+    this.categoryService.loadAllForSearchBox(this.type()!).subscribe((result) => {
       if (ApiResponseUtils.isSuccess(result.status)) {
         this.categoryList.set(result.payload);
       }

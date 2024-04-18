@@ -8,6 +8,8 @@ import { SearchFormGroupComponent } from './search-form-group/search-form-group.
 import { ValidatedFormGroupComponent } from './validated-form-group/validated-form-group.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { InputGroupComponent } from './input-group/input-group.component';
+import { CardComponent } from './card/card.component';
+import { CardInfoRowComponent } from './card-info-row/card-info-row.component';
 
 
 
@@ -19,7 +21,9 @@ import { InputGroupComponent } from './input-group/input-group.component';
     SearchFormGroupComponent,
     ValidatedFormGroupComponent,
     PaginationComponent,
-    InputGroupComponent
+    InputGroupComponent,
+    CardComponent,
+    CardInfoRowComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +37,9 @@ import { InputGroupComponent } from './input-group/input-group.component';
     SearchFormGroupComponent,
     ValidatedFormGroupComponent,
     PaginationComponent,
-    InputGroupComponent
+    InputGroupComponent,
+    CardComponent,
+    CardInfoRowComponent
   ]
 })
 export class WidgetsModule { }

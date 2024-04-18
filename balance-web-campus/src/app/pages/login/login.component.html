@@ -1,0 +1,19 @@
+<app-page-title icon="bi-door-open" title="Login"></app-page-title>
+
+<div class="row">
+   <div class="col-6">
+      <form [formGroup]="form">
+         <app-validated-form-group label="Login Id" [valid]="form.get('loginId')?.valid">
+            <input formControlName="loginId" type="text" class="form-control" placeholder="Enter your loginId.">
+         </app-validated-form-group>
+
+         <app-validated-form-group label="Password" [valid]="form.get('password')?.valid">
+            <input formControlName="password" type="password" class="form-control" placeholder="Enter your password.">
+         </app-validated-form-group>
+
+         <div>
+            <button (click)="login()" class="btn btn-outline-primary">Login</button>
+         </div>
+      </form>
+   </div>
+</div>

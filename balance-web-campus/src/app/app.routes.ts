@@ -8,6 +8,8 @@ import { BalanceDetailsComponent } from './pages/balance-details/balance-details
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployeeEditComponent } from './pages/employee-edit/employee-edit.component';
+import { LoginComponent } from './pages/login/login.component';
+import { EmployeeDetailsComponent } from './pages/employee-details/employee-details.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -15,10 +17,12 @@ export const routes: Routes = [
   {path: 'category-edit', component: CategoryEditComponent},
   {path: 'employee', component: EmployeeComponent},
   {path: 'employee-edit', component: EmployeeEditComponent},
+  {path: 'employee-details', component: EmployeeDetailsComponent},
   {path: 'incomes', component: BalanceListComponent, data: {type: 'Income'}},
   {path: 'expenses', component: BalanceListComponent, data: {type: 'Expense'}},
   {path: 'report', component: BalanceReportComponent},
   {path: 'edit', component: BalanceEditComponent},
   {path: 'details', component: BalanceDetailsComponent},
+  {path: 'login', component: LoginComponent, title: 'Login'},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];

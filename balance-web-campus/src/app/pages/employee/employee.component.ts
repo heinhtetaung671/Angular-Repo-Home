@@ -21,6 +21,7 @@ export class EmployeeComponent {
 
   constructor(builder: FormBuilder, private service: EmployeeService) {
     this.form = builder.group({
+      status: '',
       role: '',
       keyword: '',
     });
@@ -31,7 +32,7 @@ export class EmployeeComponent {
   search() {
     this.service.search(this.form.value).subscribe((result) => {
       if (result.status == 'SUCCESS') {
-        this.list.set(result.payload);
+        this.list.set(result.payload.content);
       }
     });
   }

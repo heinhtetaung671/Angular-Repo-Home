@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { ApiResponse } from '../model/api-response';
-import { CategorySelectBox } from '../model/balance-app';
+import { BalanceType, CategorySelectBox } from '../model/balance-app';
 
 const BASE_URL = `${environment.API_BASE_URL}/category`
 
@@ -11,10 +11,12 @@ const BASE_URL = `${environment.API_BASE_URL}/category`
 })
 export class CategoryService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) {  
+    console.log(new Date())
+  }
 
   create(form: any){
-    return this.http.post<ApiResponse<any>>(`${BASE_URL}/category`, form);
+    return this.http.post<ApiResponse<any>>(`${BASE_URL}`, form);
   }
 
   update(id: number, form: any){
@@ -29,8 +31,8 @@ export class CategoryService {
     return this.http.get<ApiResponse<any>>(`${BASE_URL}/${id}`);
   }
 
-  loadAllForSearchBox(){
-    return this.http.get<ApiResponse<CategorySelectBox[]>>(`${BASE_URL}/for-select-box`);
+  loadAllForSearchBox(type: BalanceType){
+    return this.http.get<ApiResponse<CategorySelectBox[]>>(`${BASE_URL}/${type}/for-select-box`);
   }
 
 }

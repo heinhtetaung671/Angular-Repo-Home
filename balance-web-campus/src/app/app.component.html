@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex" style="height: 100vh;">
 
   <div id="side-bar" [class.text-center]="!show()" [class.show]="show()" [class.hide]="!show()" class="shadow">
     <h5 (click)="toggleSideBar()" class="m-3">
@@ -31,6 +31,9 @@
         </li>
         <li>
           <app-nav-link (click)="signOut()" icon="bi-lock" title="Sign Out" [show]="show()" ></app-nav-link>
+        </li>
+        <li>
+          <app-nav-link icon="bi-door-open" title="Login" [show]="show()" [path]="['/login']"></app-nav-link>
         </li>
       </ul>
     </nav>

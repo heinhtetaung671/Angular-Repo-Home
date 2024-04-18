@@ -4,14 +4,14 @@
   <div class="row">
     <!-- Issue At -->
     <div class="col-3">
-      <app-validated-form-group [valid]="form.get('issueAt')?.valid" label="Issue Date">
+      <app-validated-form-group [valid]="form.get('issueDate')?.valid" label="Issue Date">
         <input formControlName="issueDate" type="date" class="form-control">
       </app-validated-form-group>
     </div>
 
     <!-- Category -->
     <div class="col-3">
-      <app-validated-form-group [valid]="form.get('category')?.valid" label="Category">
+      <app-validated-form-group [valid]="form.get('categoryId')?.valid" label="Category">
         <select formControlName="categoryId" class="form-select">
           <option value="">Select Category</option>
           @for (item of categoryList(); track $index) {
@@ -24,7 +24,7 @@
     <div class="col">
       <!-- Remark -->
       <app-search-form-group label="Remark">
-        <input type="text" class="form-control" placeholder="Enter Remark">
+        <input formControlName="remark" type="text" class="form-control" placeholder="Enter Remark">
       </app-search-form-group>
     </div>
   </div>
