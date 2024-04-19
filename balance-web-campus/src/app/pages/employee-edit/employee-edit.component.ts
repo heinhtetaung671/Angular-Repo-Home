@@ -10,6 +10,8 @@ import { ROLES } from '../../model/balance-model';
 import { EmployeeService } from '../../service/employee.service';
 import { Router } from '@angular/router';
 import { ApiResponseUtils } from '../../model/api-response-utils';
+import { ValidationErrorMessage } from '../../model/balance-app';
+import { error } from 'console';
 
 @Component({
   selector: 'app-employee-edit',
@@ -30,6 +32,8 @@ export class EmployeeEditComponent {
   roles = signal<string[]>(ROLES);
 
   form: FormGroup;
+  validationErrorMessage = signal<ValidationErrorMessage>({});
+  otherErrorMessage = signal<string>('');
 
   constructor(
     builder: FormBuilder,
@@ -62,7 +66,17 @@ export class EmployeeEditComponent {
     response.subscribe((result) => {
       if (ApiResponseUtils.isSuccess(result.status)) {
         this.router.navigate(['/employee']);
-      }
-    });
+      } 
+    }, error => {
+      this.validationErrorMessage.set(error.error.payload)
+        console.log(error.error.payload)
+        // if (ApiResponseUtils.isValidationError(error)) {
+          // this.validationErrorMessage.set(result.payload);
+          // console.log(result.payload)
+        // } else {
+          // this.otherErrorMessage.set(result.payload);
+        // }
+      
+    })
   }
 }

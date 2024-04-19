@@ -6,4 +6,8 @@
       <i [class.bi-x]="!valid()" [class.bi-check]="valid()"></i>
     </span>
   </div>
+  @if (errorMessage()) {
+    <span class="text-danger" style="font-size: 0.9rem;">{{ errorMessage() }}</span>
+  }
 </div>
+

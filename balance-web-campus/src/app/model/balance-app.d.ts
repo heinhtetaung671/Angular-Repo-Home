@@ -6,6 +6,10 @@ export type Role = 'Manager' | 'Employee' | 'Admin';
 
 export type EmployeeChanges = 'Creation' | 'StatusChanges' | 'InfoChanges';
 
+export interface ValidationErrorMessage {
+  [index: string]: string;
+}
+
 export interface CategorySelectBox {
   id: number;
   name: string;

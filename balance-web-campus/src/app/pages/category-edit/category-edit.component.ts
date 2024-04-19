@@ -8,8 +8,10 @@ import {
 } from '@angular/forms';
 import { BALANCE_TYPES } from '../../model/balance-model';
 import { CategoryService } from '../../service/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiResponseUtils } from '../../model/api-response-utils';
+import { ValidationErrorMessage } from '../../model/balance-app';
+import { ApiResponse } from '../../model/api-response';
 
 @Component({
   selector: 'app-category-edit',
@@ -19,12 +21,17 @@ import { ApiResponseUtils } from '../../model/api-response-utils';
   styles: ``,
 })
 export class CategoryEditComponent {
-  edit = signal<boolean>(false);
   icon = computed(() => (this.edit() ? 'bi-pencil' : 'bi-plus-lg'));
   title = computed(() => (this.edit() ? 'Edit Category' : 'Add New Category'));
 
   types = signal<string[]>(BALANCE_TYPES);
-  id = input<number>();
+  id = input<number>(0);
+  edit = computed((): boolean => {
+    return this.id() ? true : false;
+  });
+
+  validationErrorMessage = signal<ValidationErrorMessage>({});
+  otherErrorMessage = signal<string>('');
 
   form: FormGroup;
 
@@ -40,11 +47,8 @@ export class CategoryEditComponent {
     });
 
     effect(() => {
-      const categoryId = this.id();
-
-      if (categoryId) {
-        this.edit.set(true);
-        service.findById(categoryId).subscribe((result) => {
+      if (this.edit()) {
+        service.findById(this.id()).subscribe((result) => {
           if (ApiResponseUtils.isSuccess(result.status)) {
             const { id, ...updateData } = result.payload;
             this.form.patchValue(updateData);
@@ -54,14 +58,25 @@ export class CategoryEditComponent {
     });
   }
 
+  success(result: ApiResponse<any>) {
+    if (ApiResponseUtils.isSuccess(result.status)) {
+      this.router.navigate(['/category']);
+    }
+  }
+
   save() {
     let response = this.edit()
       ? this.service.update(this.id()!, this.form.value)
       : this.service.create(this.form.value);
-    response.subscribe((result) => {
-      if (ApiResponseUtils.isSuccess(result.status)) {
-        this.router.navigate(['/category']);
-      }
+    response.subscribe({
+      next: this.success,
+      error: (err) => {
+        if (ApiResponseUtils.isValidationError(err.error.status)) {
+          this.validationErrorMessage.set(err.error.payload);
+        } else {
+          this.otherErrorMessage.set(err.error.payload);
+        }
+      },
     });
   }
 }

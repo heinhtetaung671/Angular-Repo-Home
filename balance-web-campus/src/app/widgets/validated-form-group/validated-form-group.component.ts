@@ -9,4 +9,5 @@ export class ValidatedFormGroupComponent {
 
   label = input.required<string>()
   valid = input<boolean | undefined>()
+  errorMessage = input<string>();
 }

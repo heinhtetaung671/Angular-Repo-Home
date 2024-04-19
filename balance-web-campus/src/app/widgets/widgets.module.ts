@@ -10,6 +10,9 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { InputGroupComponent } from './input-group/input-group.component';
 import { CardComponent } from './card/card.component';
 import { CardInfoRowComponent } from './card-info-row/card-info-row.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
+import { FitToParentComponent } from './fit-to-parent/fit-to-parent.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 
 
@@ -23,7 +26,10 @@ import { CardInfoRowComponent } from './card-info-row/card-info-row.component';
     PaginationComponent,
     InputGroupComponent,
     CardComponent,
-    CardInfoRowComponent
+    CardInfoRowComponent,
+    ErrorMessageComponent,
+    FitToParentComponent,
+    LoadingScreenComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,10 @@ import { CardInfoRowComponent } from './card-info-row/card-info-row.component';
     PaginationComponent,
     InputGroupComponent,
     CardComponent,
-    CardInfoRowComponent
+    CardInfoRowComponent,
+    ErrorMessageComponent,
+    FitToParentComponent,
+    LoadingScreenComponent
   ]
 })
 export class WidgetsModule { }

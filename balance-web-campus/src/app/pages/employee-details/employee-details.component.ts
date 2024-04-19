@@ -23,6 +23,7 @@ export class EmployeeDetailsComponent {
     phone: '0151561515',
     email: 'khant.99.kk89@gmail.com'
   }, history: []});
+  showLoading: boolean = false;
 
   constructor(private service: EmployeeService){
     effect(() => {
@@ -31,7 +32,9 @@ export class EmployeeDetailsComponent {
   }
 
   loadEmployeeDetailsData(){
+    this.showLoading = true
     this.service.findById(this.id()).subscribe(result => {
+      this.showLoading = false;
       if(ApiResponseUtils.isSuccess(result.status)){
         this.data.set(result.payload)
       }
